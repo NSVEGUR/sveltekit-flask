@@ -11,13 +11,13 @@
 
 ## Introduction
 
-This is a hybrid Sveltekit + Python app that uses Sveltekit as the frontend and Flask as the API backend. One great use case of this is to write Sveltekit apps that use Python AI libraries on the backend.
+This is a hybrid Sveltekit + Flask Python app that uses Sveltekit as the frontend and Flask as the API backend. One great use case of this is to write Sveltekit apps that use Python AI libraries on the backend.
 
 ## How It Works
 
 The Python/Flask server is mapped into to Next.js app under `/api/`.
 
-This is implemented using [`hook.server.ts` rewrites](https://github.com/vercel/examples/blob/main/python/nextjs-flask/next.config.js) to map any request to `/api/:path*` to the Flask API, which is hosted in the `/api` folder.
+This is implemented using [`hook.server.ts` handleFetch](https://github.com/vercel/examples/blob/main/python/nextjs-flask/next.config.js) to map any request to `/api/:path*` to the Flask API, which is hosted in the `/api` folder.
 
 On localhost, the rewrite will be made to the `127.0.0.1:3000` port, which is where the Flask server is running.
 
@@ -25,29 +25,31 @@ In production, the Flask server is hosted as [Python serverless functions](https
 
 ## Demo
 
-https://nextjs-flask-starter.vercel.app/
+https://sveltekit-flask.vercel.app/
 
 ## Developing Locally
 
-You can clone & create this repo with the following command
+You can clone the repo, and create `.env` file with same values as `.env.example` which are `API_ADDRESS` and `CLIENT_API_ADDRESS`.
 
-```bash
-npx create-next-app nextjs-flask --example "https://github.com/vercel/examples/tree/main/python/nextjs-flask"
-```
+if you want to change any port settings feel free to change them in `package.json` (you'll also need to update it in `.env`).
 
 ## Getting Started
 
 First, install the dependencies:
 
 ```bash
-npm install
+pnpm install
 # or
 yarn
 # or
-pnpm install
+npm install
 ```
 
-Add `.env` file and create `API_ADDRESS` and `CLIENT_API_ADDRESS` which are flask address and the client address what you want to map respectively. Sample is given in `.env.example` which can work as default.
+Then setup virtual environment for flask via following command:
+
+```bash
+pipenv shell
+```
 
 Then, run the development server:
 
@@ -61,7 +63,7 @@ pnpm dev
 
 Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
 
-The Flask server will be running on [http://127.0.0.1:3000](http://127.0.0.1:3000) – feel free to change the port in `package.json` (you'll also need to update it in `.env`).
+The Flask server will be running on [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
 ## Learn More
 

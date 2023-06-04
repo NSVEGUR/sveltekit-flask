@@ -8,4 +8,4 @@ app.register_blueprint(main_bp, url_prefix='/main')
 
 @app.route('/')
 def index():
-    return jsonify({'message': 'Hey from flask API, index route'})
+    return jsonify({'message': 'Hey from flask!'})

@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify
+from datetime import datetime
 
 bp = Blueprint('main', __name__)
 
 
-@bp.route('/')
-def index():
+
+@bp.route('/time')
+def time():
     return jsonify({
-        'message': "Hello from main route"
+        'time': datetime.now().strftime("%H:%M:%S")
     })
